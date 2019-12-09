@@ -41,6 +41,40 @@ _단일책임의 원칙: Single Responsibility Principle_
 2. 유지보수 용이
 3. 다른 원리들을 적용하는 기초 과정
 
+### 적용
+
+#### 적용전
+
+```javascript
+function Cartoon(opt) {
+  this.id = "a1234bje1";
+  this.price = opt.price;
+  this.author = opt.author;
+  this.genre = opt.genre;
+  this.title = title;
+}
+```
+
+> Cartoon.id는 시리얼 넘버의 역할을 하고 있음으로 Cartoon으로 생성된 인스턴스의 아이디 역할을 수행하게 됨으로 고유의 값입니다. 하지만 나머지 부분은 Cartoon의 변경가능한 요소들로 이루어져 있음으로, 분리하여 단일 책임을 부여하는 것이 옳습니다.
+
+#### 적용후
+
+```javascript
+function Cartoon(spec) {
+  this.id = "a1234bje1"; // 시리얼 넘버
+  this.spec = spec;
+}
+function CartoonSpec(opt) {
+  this.opt = opt || {};
+  this.price = this.opt.price || 0;
+  this.author = this.opt.author || "";
+  this.genre = this.opt.genre || "";
+  this.title = this.opt.title || "";
+}
+```
+
+> 이제 사용자는 Cartoon의 구성요서가 바뀐다고 하여도 Cartoon을 고칠 필요가 없고, 기존에 남아있는 CartoonSpec을 수정하지 않아도 됩니다. 새로운 CartoonSpec을 만들어서 사용하면 기존소스의 변경없이 코드를 확장할 수 있습니다.
+
 ## OCP
 
 _개방폐쇄의 원칙: Open Close Principle_
