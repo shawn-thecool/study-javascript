@@ -10,6 +10,11 @@ I — Interface segregation principle
 D — Dependency Inversion principle
 ```
 
+## 사용하기
+
+1. Check Problem.js
+2. Check refactor.index & refactor.md
+
 ### 참고자료
 
 - [nextree](http://www.nextree.co.kr/p6960/)
