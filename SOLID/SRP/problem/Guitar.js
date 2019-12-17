@@ -7,23 +7,13 @@
 class Guitar {
   constructor(props) {
     // 고유값
-    this.serialNumber = props.serialNumber;
+    this.serialNumber = props.serialNumber
     // 특정 정보군
-    this.price = props.price;
-    this.maker = props.maker;
-    this.stringCount = props.stringCount;
-    this.woodType = props.woodType;
+    this.price = props.price
+    this.maker = props.maker
+    this.stringCount = props.stringCount
+    this.woodType = props.woodType
   }
 }
 
-const guitar = new Guitar({
-  serialNumber: "ABC1234DEF5678",
-  price: 300,
-  maker: "shawn",
-  stringCount: 6,
-  woodType: "oak"
-});
-
-console.log(guitar);
-
-module.exports = Guitar;
+module.exports = Guitar

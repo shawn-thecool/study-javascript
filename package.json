@@ -21,5 +21,16 @@
   "devDependencies": {
     "dependency-cruiser": "^6.0.0",
     "graphviz": "^0.0.9"
+  },
+  "prettier": {
+    "printWidth": 150,
+    "semi": false,
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "tabs": true,
+    "[javascript]": {
+      "editor.formatOnSave": true
+    }
   }
 }
