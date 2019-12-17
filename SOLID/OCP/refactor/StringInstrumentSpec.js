@@ -5,6 +5,10 @@ class StringInstrumentSpec {
     this.stringCount = stringCount
     this.woodType = woodType;
   }
+  // vaild
+  // create
+  // set
+  // get
 }
 
 module.exports = StringInstrumentSpec
