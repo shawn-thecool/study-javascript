@@ -1,0 +1,25 @@
+{
+  "name": "study-javascript",
+  "version": "1.0.0",
+  "description": "자바스크립트 개념 정리",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:deptree": "depcruise --exclude '(node_modules)' --output-type dot SOLID | dot -T svg > dependencyGraph.svg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shawn-thecool/study-javascript.git"
+  },
+  "keywords": [],
+  "author": "shawn-thecool <shawn-dev@naver.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shawn-thecool/study-javascript/issues"
+  },
+  "homepage": "https://github.com/shawn-thecool/study-javascript#readme",
+  "devDependencies": {
+    "dependency-cruiser": "^6.0.0",
+    "graphviz": "^0.0.9"
+  }
+}
