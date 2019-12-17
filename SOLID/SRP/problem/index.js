@@ -1,3 +1,4 @@
+const prettyjson = require('prettyjson')
 const Guitar = require('./Guitar')
 
 const guitar = new Guitar({
@@ -8,4 +9,4 @@ const guitar = new Guitar({
   woodType: 'oak'
 })
 
-console.log(guitar)
+console.log(prettyjson.render(guitar))

@@ -32,5 +32,10 @@
     "[javascript]": {
       "editor.formatOnSave": true
     }
+  },
+  "dependencies": {
+    "global": "^4.4.0",
+    "prettyjson": "^1.2.1",
+    "underscore-cli": "^0.2.19"
   }
 }
