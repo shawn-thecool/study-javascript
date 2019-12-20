@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:deptree": "depcruise --exclude '(node_modules)' --output-type dot SOLID | dot -T svg > dependencyGraph.svg"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,18 @@
   },
   "homepage": "https://github.com/shawn-thecool/study-javascript#readme",
   "devDependencies": {
-    "dependency-cruiser": "^6.0.0",
-    "graphviz": "^0.0.9"
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-typescript": "^7.7.7",
+    "babel-loader": "^8.0.6",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.2.1",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "prettyjson": "^1.2.1"
   },
   "prettier": {
     "printWidth": 150,
@@ -32,10 +42,5 @@
     "[javascript]": {
       "editor.formatOnSave": true
     }
-  },
-  "dependencies": {
-    "global": "^4.4.0",
-    "prettyjson": "^1.2.1",
-    "underscore-cli": "^0.2.19"
   }
 }
