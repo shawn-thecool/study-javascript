@@ -15,7 +15,7 @@ class Student implements Person {
     this.fullName = [firstName, middleInitial, lastName].join(' ')
   }
   // setter
-  setFirstName(firstName) {
+  setFirstName(firstName: string) {
     this.firstName = firstName
   }
   // getFullName
@@ -32,3 +32,4 @@ function greeter(person: Person) {
 let user = new Student('shawn', 'L.', 'thecool')
 
 console.log(greeter(user))
+

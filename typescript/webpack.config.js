@@ -2,10 +2,10 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    app: ['./typescript/index.ts']
+    app: ['./src/ex1.basic.ts', './src/ex2.implement.ts']
   },
   output: {
-    path: path.resolve(__dirname, 'typescript', 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     publicPath: '/'
   },

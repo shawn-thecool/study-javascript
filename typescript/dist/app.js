@@ -86,25 +86,131 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./typescript/index.ts":
-/*!*****************************!*\
-  !*** ./typescript/index.ts ***!
-  \*****************************/
+/***/ "./src/ex1.basic.ts":
+/*!**************************!*\
+  !*** ./src/ex1.basic.ts ***!
+  \**************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/ts-loader/index.js):\nError: Cannot find module 'typescript'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:636:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:562:25)\n    at Module.require (internal/modules/cjs/loader.js:692:17)\n    at require (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/v8-compile-cache/v8-compile-cache.js:161:20)\n    at Object.<anonymous> (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/ts-loader/dist/utils.js:6:20)\n    at Module._compile (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)\n    at Module.load (internal/modules/cjs/loader.js:653:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:585:3)\n    at Module.require (internal/modules/cjs/loader.js:692:17)\n    at require (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/v8-compile-cache/v8-compile-cache.js:161:20)\n    at Object.<anonymous> (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/ts-loader/dist/after-compile.js:6:17)\n    at Module._compile (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)\n    at Module.load (internal/modules/cjs/loader.js:653:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:585:3)\n    at Module.require (internal/modules/cjs/loader.js:692:17)\n    at require (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/v8-compile-cache/v8-compile-cache.js:161:20)\n    at Object.<anonymous> (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/ts-loader/dist/instances.js:6:25)\n    at Module._compile (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)\n    at Module.load (internal/modules/cjs/loader.js:653:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:585:3)\n    at Module.require (internal/modules/cjs/loader.js:692:17)\n    at require (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/v8-compile-cache/v8-compile-cache.js:161:20)\n    at Object.<anonymous> (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/ts-loader/dist/index.js:5:21)\n    at Module._compile (/Users/shawn.thecool/git/shawn-thecool/study-javascript/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Student =
+/*#__PURE__*/
+function () {
+  // 맵버변수 
+  // 생성자
+  function Student(firstName, middleInitial, lastName) {
+    _classCallCheck(this, Student);
+
+    this.firstName = firstName;
+    this.middleInitial = middleInitial;
+    this.lastName = lastName;
+    this.fullName = [firstName, middleInitial, lastName].join(' ');
+  } // setter
+
+
+  _createClass(Student, [{
+    key: "setFirstName",
+    value: function setFirstName(firstName) {
+      this.firstName = firstName;
+    } // getFullName
+
+  }, {
+    key: "getFullName",
+    value: function getFullName() {
+      return this.fullName;
+    }
+  }]);
+
+  return Student;
+}();
+
+function greeter(person) {
+  var firstName = person.firstName,
+      lastName = person.lastName;
+  return "Hi ".concat(firstName, " ").concat(lastName);
+}
+
+var user = new Student('shawn', 'L.', 'thecool');
+console.log(greeter(user));
+
+/***/ }),
+
+/***/ "./src/ex2.implement.ts":
+/*!******************************!*\
+  !*** ./src/ex2.implement.ts ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// clock 의 생성자 벨류를 지정한다
+// clock 의 method 
+function createClock(ctor, hour, minute) {
+  return new ctor(hour, minute);
+}
+
+var DigitalClock =
+/*#__PURE__*/
+function () {
+  function DigitalClock(h, m) {
+    _classCallCheck(this, DigitalClock);
+  }
+
+  _createClass(DigitalClock, [{
+    key: "tick",
+    value: function tick() {
+      console.log('beep beep');
+    }
+  }]);
+
+  return DigitalClock;
+}();
+
+var AnalogClock =
+/*#__PURE__*/
+function () {
+  function AnalogClock(h, m) {
+    _classCallCheck(this, AnalogClock);
+  }
+
+  _createClass(AnalogClock, [{
+    key: "tick",
+    value: function tick() {
+      console.log('tick tock');
+    }
+  }]);
+
+  return AnalogClock;
+}();
+
+var digital = createClock(DigitalClock, 7, 21);
+var analog = createClock(AnalogClock, 7, 21);
+console.log('ex2.implment test11');
+digital.tick();
+analog.tick();
 
 /***/ }),
 
 /***/ 0:
-/*!***********************************!*\
-  !*** multi ./typescript/index.ts ***!
-  \***********************************/
+/*!*******************************************************!*\
+  !*** multi ./src/ex1.basic.ts ./src/ex2.implement.ts ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./typescript/index.ts */"./typescript/index.ts");
+__webpack_require__(/*! ./src/ex1.basic.ts */"./src/ex1.basic.ts");
+module.exports = __webpack_require__(/*! ./src/ex2.implement.ts */"./src/ex2.implement.ts");
 
 
 /***/ })

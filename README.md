@@ -2,6 +2,11 @@
 
 자바스크립트 개념 정리
 
+추가
+1. typescript
+2. Rxjs
+3. 함수형 프로그래밍 -> 이터레이블 / 제너레이터
+
 ## References
 
 - [The Modern JavaScript Tutorial](https://javascript.info/)
