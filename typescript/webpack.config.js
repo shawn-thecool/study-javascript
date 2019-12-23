@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    app: ['./src/ex1.basic.ts', './src/ex2.implement.ts']
+    app: ['./src/ex1.basic.ts', './src/ex2.implement.ts', './src/ex1.types.ts']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

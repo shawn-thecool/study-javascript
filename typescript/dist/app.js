@@ -141,6 +141,141 @@ console.log(greeter(user));
 
 /***/ }),
 
+/***/ "./src/ex1.types.ts":
+/*!**************************!*\
+  !*** ./src/ex1.types.ts ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Basic Types
+// boolean
+var isDone = false;
+console.log('boolean', {
+  isDone: isDone
+}); // number
+
+var decimal = 6;
+var hex = 0xf00d;
+var binary = 10;
+var octal = 484;
+console.log('number', {
+  decimal: decimal,
+  hex: hex,
+  binary: binary,
+  octal: octal
+}); // string
+
+var color = 'blue';
+var fullName = 'Bob bobbington';
+var sentence = "my name is ".concat(fullName, " and my voice decial is ").concat(decimal);
+console.log('string', {
+  color: color,
+  fullName: fullName,
+  sentence: sentence
+}); // Array
+
+var list = [1, 2, 3];
+var genericList = [1, 2, 3];
+console.log('array', {
+  list: list,
+  genericList: genericList
+}); // Tuple
+
+var x;
+x = ['string', 0];
+console.log('tuple', {
+  x: x
+}); // Enum - 열거형, 순차처리 with generator - iterable - 활용
+
+var Color;
+
+(function (Color) {
+  Color[Color["Red"] = 0] = "Red";
+  Color[Color["Green"] = 1] = "Green";
+  Color[Color["Blue"] = 2] = "Blue";
+})(Color || (Color = {}));
+
+var c = Color.Green;
+var Color2;
+
+(function (Color2) {
+  Color2[Color2["Red"] = 1] = "Red";
+  Color2[Color2["Green"] = 2] = "Green";
+  Color2[Color2["Blue"] = 3] = "Blue";
+})(Color2 || (Color2 = {}));
+
+var c2 = Color2.Green;
+var Color3;
+
+(function (Color3) {
+  Color3[Color3["Red"] = 1] = "Red";
+  Color3[Color3["Green"] = 2] = "Green";
+  Color3[Color3["Blue"] = 4] = "Blue";
+})(Color3 || (Color3 = {}));
+
+var c3 = Color3.Green;
+console.log('enum', {
+  c: c,
+  c2: c2,
+  c3: c3
+}); // Any
+
+var notSuer = 4;
+var anyList = [1, true, "free"];
+console.log('any', {
+  notSuer: notSuer,
+  anyList: anyList
+}); // Void
+
+function warnUSer() {
+  console.log('this is my warning message');
+}
+
+var voidFn = function voidFn() {
+  console.log('void fn with arrow ');
+};
+
+var u = undefined;
+var n = null;
+console.log('void', {
+  warnUSer: warnUSer,
+  voidFn: voidFn,
+  u: u,
+  n: n
+}); // Never - 절대 재할당 되지 않음 프로세스의 끝까지 가져감
+
+function error(message) {
+  throw new Error(message);
+}
+
+function fail() {
+  return error('something failed');
+}
+
+function infiniteLoop() {
+  while (true) {}
+} // Object
+// declare function create(o: object | null): void; - ReferenceError: create is not defined
+// create(null)
+// create(42); // Error
+// create("string"); // Error
+// create(false); // Error
+// create(undefined); // Error
+// Type assertions - 유형을 프로그래머가 알고 있다고 가정. 런타임에서 체크 하지 않음 컴파일단계에서만 사용
+// let someValue: any = "this is a string";
+// let strLength: number = (<string>someValue).length;
+
+
+var someValue = "this is a string";
+var strLength = someValue.length;
+console.log('assertions', {
+  someValue: someValue,
+  strLength: strLength
+});
+
+/***/ }),
+
 /***/ "./src/ex2.implement.ts":
 /*!******************************!*\
   !*** ./src/ex2.implement.ts ***!
@@ -170,7 +305,7 @@ function () {
   _createClass(DigitalClock, [{
     key: "tick",
     value: function tick() {
-      console.log('beep beep');
+      console.log('DigitalClock : beep beep');
     }
   }]);
 
@@ -187,7 +322,7 @@ function () {
   _createClass(AnalogClock, [{
     key: "tick",
     value: function tick() {
-      console.log('tick tock');
+      console.log('AnalogClock : tick tock');
     }
   }]);
 
@@ -203,14 +338,15 @@ analog.tick();
 /***/ }),
 
 /***/ 0:
-/*!*******************************************************!*\
-  !*** multi ./src/ex1.basic.ts ./src/ex2.implement.ts ***!
-  \*******************************************************/
+/*!**************************************************************************!*\
+  !*** multi ./src/ex1.basic.ts ./src/ex2.implement.ts ./src/ex1.types.ts ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./src/ex1.basic.ts */"./src/ex1.basic.ts");
-module.exports = __webpack_require__(/*! ./src/ex2.implement.ts */"./src/ex2.implement.ts");
+__webpack_require__(/*! ./src/ex2.implement.ts */"./src/ex2.implement.ts");
+module.exports = __webpack_require__(/*! ./src/ex1.types.ts */"./src/ex1.types.ts");
 
 
 /***/ })
