@@ -6,6 +6,9 @@ const map = [
   [3, 2, 1, 2, 3]
 ];
 
+// map
+// matrix - movement
+// matrix - tile - beatmap/png
 let state = {
   loc: {
     x: 2,
