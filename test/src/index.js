@@ -6,12 +6,12 @@ console.log("hello world");
 // const
 const env = process.env;
 const argv = process.argv;
-const args = uitls.p.getArgs(2);
-const argsAsList = uitls.a.parseArrayToListWithSpliter(args, "=");
-const argsAsObj = uitls.l.parseListToObject(argsAsList);
+const args = uitls.process.getArgs(2);
+const argsAsList = uitls.array.parseArrayToListWithSpliter(args, "=");
+const argsAsObj = uitls.list.parseListToObject(argsAsList);
 
 // set
-uitls.p.setEnvProp("NODE_ENV", "dev");
+uitls.process.setEnvProp("NODE_ENV", "dev");
 
 // log
 console.log("info", {
