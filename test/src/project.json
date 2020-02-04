@@ -1,0 +1,33 @@
+{
+  "rootDir": "container",
+  "unitDir": "temp",
+  "contents": {
+    "assets": {
+      "dirname": "assets"
+    },
+    "indexJS": {
+      "filename": "index.js",
+      "content": ""
+    },
+    "indexHTML": {
+      "filename": "index.html",
+      "content": ""
+    },
+    "indexCSS": {
+      "filename": "index.css",
+      "content": ""
+    },
+    "dataJSON": {
+      "filename": "data.json",
+      "content": ""
+    },
+    "configJSON": {
+      "filename": "config.json",
+      "content": ""
+    },
+    "readmeMD": {
+      "filename": "README.md",
+      "content": ""
+    }
+  }
+}
