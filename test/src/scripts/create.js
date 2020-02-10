@@ -6,7 +6,7 @@ const createUnit = async ($path, unitname, config) => {
   const unitpath = path.resolve($path, unitname);
   console.log('unitpath', config.assets)
   await _fs.createDir(unitpath);
-  await (config.assets) && _fs.createDir(path.resolve(unitpath, config.assets.dirname));
+  (await (config.assets) && (_fs.createDir(path.resolve(unitpath, config.assets.dirname))));
   (await config.indexJS) && _fs.createFile(path.resolve(unitpath, config.indexJS.filename), config.indexJS.content);
   (await config.indexHTML) && _fs.createFile(path.resolve(unitpath, config.indexHTML.filename), config.indexHTML.content);
   (await config.indexCSS) && _fs.createFile(path.resolve(unitpath, config.indexCSS.filename), config.indexCSS.content);
