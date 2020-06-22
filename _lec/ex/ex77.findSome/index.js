@@ -29,23 +29,6 @@ const arr4 = [
   [0, 1, 0, 0, 1, 0],
 ];
 
-//                     pprevline[a.index - (rowcount*2)]
-//                     prevline[a.index - rowcount]
-//  sameline[a.index-1]             a              sameline[a.index + 1]
-//                     nextline[a.index + rowcount]
-//                     nextline[a.index + rowcount *2]
-
-// 1. prevline true && nextline true
-// 2. 북동남서 로 검색을 시작
-
-// target 에서 시작
-// 대칭인 배열을 찾는다.
-// 다음 라인에서 2개의 1 을 찾는다 처음과 끝이
-// 다음 라인에서 2개 의 1을 찾는다 처음과 끝이
-//
-
-// utils
-const equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 const checkRow = (arr, size) => {
   if (arr.length !== 2 + size) return; // 홀수 길이 체크
