@@ -1,7 +1,8 @@
-
+// [functions & constructors]
 /**
  * Box : 정해진 규칙에 따라서 스타일링되고, 움직일 수 있는 정사각형
  */
+const COLORS = ["red", "gold", "pink", "skyblue", "green", "purple"];
 const REVERSE_DIRECTION_MAP = {
   UP: "DOWN",
   DOWN: "UP",
@@ -12,10 +13,10 @@ const INIT_STATE_BOX = {
   ROOT_ID: "root",
   DIRECTION_X: "RIGHT",
   DIRECTION_Y: "DOWN",
-  COLOR: "red",
+  COLOR: COLORS[0],
   SIZE: 50,
-  W: 600,
-  H: 400,
+  W: 800,
+  H: 600,
   X: 0,
   Y: 0,
 };
@@ -44,6 +45,7 @@ Box.prototype.render = function () {
   div.style.width = this.size + "px";
   div.style.height = this.size + "px";
   div.style.backgroundColor = this.color;
+  // div.style.borderRadius = "50%";
   this.$root.appendChild(div);
   return this;
 };
@@ -151,13 +153,14 @@ BoxDivider.prototype.pause = function () {
 };
 BoxDivider.prototype.divide = function () {
   this.boxs.map((box) => {
-    const halfSize = Math.floor(box.size / 2);
+    const halfSize = Math.floor(box.size / 1.5);
     this.create({
       size: halfSize,
       x: box.x,
       y: box.y,
       dx: "RIGHT",
       dy: "DOWN",
+      color: box.color,
     })
       .create({
         size: halfSize,
@@ -165,6 +168,7 @@ BoxDivider.prototype.divide = function () {
         y: box.y,
         dx: "LEFT",
         dy: "DOWN",
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
       })
       .create({
         size: halfSize,
@@ -172,6 +176,7 @@ BoxDivider.prototype.divide = function () {
         y: box.y,
         dx: "RIGHT",
         dy: "UP",
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
       })
       .create({
         size: halfSize,
@@ -179,6 +184,7 @@ BoxDivider.prototype.divide = function () {
         y: box.y,
         dx: "LEFT",
         dy: "UP",
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
       })
       .remove(box.id);
   });
@@ -186,9 +192,7 @@ BoxDivider.prototype.divide = function () {
   this.render();
   return this;
 };
-
-
-// exec()
+// [execute]
 const bd = new BoxDivider();
 document.querySelector(".btn_init").addEventListener("click", () => bd.init());
 document
