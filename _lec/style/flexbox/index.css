@@ -15,6 +15,11 @@ body {
   height: 100%;
   overflow: hidden;
 }
+img{
+  display: block;
+  height: 100%;
+  width: 100%;
+}
 .fi1 {
   flex: 1;
   min-width: 25%;
@@ -50,10 +55,10 @@ body {
   height: calc(100% - 100px);
 }
 .app_cont .wrap_aside {
-  flex: 1;
+  flex: 2;
   min-width: 50px;
   padding: 10px 0;
-  transition: all 0.7s;
+  transition: all 0.3s;
 }
 .app_cont .wrap_aside._mini {
   flex: 0;
@@ -81,19 +86,19 @@ body {
   width: 25%;
   height: 25%;
   padding: 5px;
-  transition: all 0.7s;
+  transition: all 0.3s;
 }
 .box_frame._expand {
   width: 100%;
   height: 100%;
 }
 .box_frame._deexpand {
-  opacity: 0;
   width: 0;
   height: 0;
   flex: 0;
   min-width: 100%;
   padding: 0;
+  opacity: 0;
 }
 .box_color {
   display: flex;
@@ -103,5 +108,4 @@ body {
   height: 100%;
   background-color: #323c54;
   font-size: 100px;
-
 }
