@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div id="root" class="app">
+      <div class="app_head">
+        <div class="wrap_head">header</div>
+        <div class="wrap_nav">nav</div>
+      </div>
+      <div class="app_cont">
+        <div class="wrap_aside">
+          <div class="aside_gnb">
+            <button class="btn_mini">resize</button>
+          </div>
+        </div>
+        <div class="wrap_main">
+          <div class="box_frame fi3"><div class="box_color">1</div></div>
+          <div class="box_frame fi1"><div class="box_color">2</div></div>
+
+          <div class="box_frame fi1"><div class="box_color">3</div></div>
+          <div class="box_frame fi1"><div class="box_color">4</div></div>
+          <div class="box_frame fi1"><div class="box_color">5</div></div>
+          <div class="box_frame fi1"><div class="box_color">6</div></div>
+
+          <div class="box_frame fi2"><div class="box_color">7</div></div>
+          <div class="box_frame fi2"><div class="box_color">8</div></div>
+
+          <div class="box_frame fi4"><div class="box_color">9</div></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const $wrapAside = document.querySelector(".wrap_aside");
+      const $wrap_main = document.querySelector(".wrap_main");
+      const $btnMini = $wrapAside.querySelector(".btn_mini");
+      // gnb mini ctrl
+      $btnMini.addEventListener(
+        "click",
+        () => {
+          const ACTIVE_CLASS_NAME = "_mini";
+          const $wrapAsideClassList = $wrapAside.classList;
+          $wrapAsideClassList.contains(ACTIVE_CLASS_NAME)
+            ? $wrapAsideClassList.remove(ACTIVE_CLASS_NAME)
+            : $wrapAsideClassList.add(ACTIVE_CLASS_NAME);
+        },
+        false
+      );
+      // box_frame ctrl
+      $wrap_main.addEventListener(
+        "click",
+        (evt) => {
+          if (!evt.target.matches(".box_color")) return;
+          const ACTIVE_CLASS_NAME = "_expand";
+          const DEACTIVE_CLASS_NAME = "_deexpand";
+          const $targetClassList = evt.target.parentElement.classList;
+          if ($targetClassList.contains(ACTIVE_CLASS_NAME)) {
+            Array.prototype.slice
+              .call($wrap_main.querySelectorAll(".box_frame"))
+              .map(($bf) => $bf.classList.remove(DEACTIVE_CLASS_NAME));
+            $targetClassList.remove(ACTIVE_CLASS_NAME);
+          } else {
+            Array.prototype.slice
+              .call($wrap_main.querySelectorAll(".box_frame"))
+              .map(($bf) => $bf.classList.add(DEACTIVE_CLASS_NAME));
+            $targetClassList.remove(DEACTIVE_CLASS_NAME);
+            $targetClassList.add(ACTIVE_CLASS_NAME);
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
