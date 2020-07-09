@@ -19,18 +19,38 @@
           </div>
         </div>
         <div class="wrap_main">
-          <div class="box_frame fi3"><div class="box_color"><img src="test1.png"></div></div>
-          <div class="box_frame fi1"><div class="box_color"><img src="test2.png"></div></div>
+          <div class="box_frame fi3">
+            <div class="box_color">
+              <div class="canvas" width="500" height="200"></div>
+            </div>
+          </div>
+          <div class="box_frame fi1">
+            <div class="box_color"><img src="test2.png" /></div>
+          </div>
 
-          <div class="box_frame fi1"><div class="box_color"><img src="test3.png"></div></div>
-          <div class="box_frame fi1"><div class="box_color"><img src="test4.png"></div></div>
-          <div class="box_frame fi1"><div class="box_color"><img src="test5.png"></div></div>
-          <div class="box_frame fi1"><div class="box_color"><img src="test6.png"></div></div>
+          <div class="box_frame fi1">
+            <div class="box_color"><img src="test3.png" /></div>
+          </div>
+          <div class="box_frame fi1">
+            <div class="box_color"><img src="test4.png" /></div>
+          </div>
+          <div class="box_frame fi1">
+            <div class="box_color"><img src="test5.png" /></div>
+          </div>
+          <div class="box_frame fi1">
+            <div class="box_color"><img src="test6.png" /></div>
+          </div>
 
-          <div class="box_frame fi2"><div class="box_color"><img src="test7.png"></div></div>
-          <div class="box_frame fi2"><div class="box_color"><img src="test8.png"></div></div>
+          <div class="box_frame fi2">
+            <div class="box_color"><img src="test7.png" /></div>
+          </div>
+          <div class="box_frame fi2">
+            <div class="box_color"><img src="test8.png" /></div>
+          </div>
 
-          <div class="box_frame fi4"><div class="box_color"><img src="test9.png"></div></div>
+          <div class="box_frame fi4">
+            <div class="box_color"><img src="test9.png" /></div>
+          </div>
         </div>
         <div class="wrap_aside _right">
           <div class="aside_gnb">
@@ -40,55 +60,60 @@
       </div>
     </div>
     <script>
-      const $wrap_main = document.querySelector(".wrap_main");
-      const $wrapAsideR = document.querySelector(".wrap_aside._right");
-      const $wrapAsideL = document.querySelector(".wrap_aside._left");
-      // gnb mini ctrl
-      $wrapAsideR.querySelector(".btn_mini").addEventListener(
-        "click",
-        () => {
-          const ACTIVE_CLASS_NAME = "_mini";
-          const $wrapAsideClassList = $wrapAsideR.classList;
-          $wrapAsideClassList.contains(ACTIVE_CLASS_NAME)
-            ? $wrapAsideClassList.remove(ACTIVE_CLASS_NAME)
-            : $wrapAsideClassList.add(ACTIVE_CLASS_NAME);
-        },
-        false
-      );
-      $wrapAsideL.querySelector(".btn_mini").addEventListener(
-        "click",
-        () => {
-          const ACTIVE_CLASS_NAME = "_mini";
-          const $wrapAsideClassList = $wrapAsideL.classList;
-          $wrapAsideClassList.contains(ACTIVE_CLASS_NAME)
-            ? $wrapAsideClassList.remove(ACTIVE_CLASS_NAME)
-            : $wrapAsideClassList.add(ACTIVE_CLASS_NAME);
-        },
-        false
-      );
-      // box_frame ctrl
-      $wrap_main.addEventListener(
-        "click",
-        (evt) => {
-          if (!evt.target.matches(".box_color img")) return;
-          const ACTIVE_CLASS_NAME = "_expand";
-          const DEACTIVE_CLASS_NAME = "_deexpand";
-          const $targetClassList = evt.target.parentElement.parentElement.classList;
-          if ($targetClassList.contains(ACTIVE_CLASS_NAME)) {
-            Array.prototype.slice
-              .call($wrap_main.querySelectorAll(".box_frame"))
-              .map(($bf) => $bf.classList.remove(DEACTIVE_CLASS_NAME));
-            $targetClassList.remove(ACTIVE_CLASS_NAME);
-          } else {
-            Array.prototype.slice
-              .call($wrap_main.querySelectorAll(".box_frame"))
-              .map(($bf) => $bf.classList.add(DEACTIVE_CLASS_NAME));
-            $targetClassList.remove(DEACTIVE_CLASS_NAME);
-            $targetClassList.add(ACTIVE_CLASS_NAME);
-          }
-        },
-        false
-      );
+      "use strict";
+      (function () {
+        const $wrap_main = document.querySelector(".wrap_main");
+        const $wrapAsideR = document.querySelector(".wrap_aside._right");
+        const $wrapAsideL = document.querySelector(".wrap_aside._left");
+        // gnb mini ctrl
+        $wrapAsideR.querySelector(".btn_mini").addEventListener(
+          "click",
+          () => {
+            const ACTIVE_CLASS_NAME = "_mini";
+            const $wrapAsideClassList = $wrapAsideR.classList;
+            $wrapAsideClassList.contains(ACTIVE_CLASS_NAME)
+              ? $wrapAsideClassList.remove(ACTIVE_CLASS_NAME)
+              : $wrapAsideClassList.add(ACTIVE_CLASS_NAME);
+          },
+          false
+        );
+        $wrapAsideL.querySelector(".btn_mini").addEventListener(
+          "click",
+          () => {
+            const ACTIVE_CLASS_NAME = "_mini";
+            const $wrapAsideClassList = $wrapAsideL.classList;
+            $wrapAsideClassList.contains(ACTIVE_CLASS_NAME)
+              ? $wrapAsideClassList.remove(ACTIVE_CLASS_NAME)
+              : $wrapAsideClassList.add(ACTIVE_CLASS_NAME);
+          },
+          false
+        );
+        // box_frame ctrl
+        $wrap_main.addEventListener(
+          "click",
+          (evt) => {
+            if (!evt.target.matches(".box_color img")) return;
+            const ACTIVE_CLASS_NAME = "_expand";
+            const DEACTIVE_CLASS_NAME = "_deexpand";
+            const $targetClassList =
+              evt.target.parentElement.parentElement.classList;
+            if ($targetClassList.contains(ACTIVE_CLASS_NAME)) {
+              Array.prototype.slice
+                .call($wrap_main.querySelectorAll(".box_frame"))
+                .map(($bf) => $bf.classList.remove(DEACTIVE_CLASS_NAME));
+              $targetClassList.remove(ACTIVE_CLASS_NAME);
+            } else {
+              Array.prototype.slice
+                .call($wrap_main.querySelectorAll(".box_frame"))
+                .map(($bf) => $bf.classList.add(DEACTIVE_CLASS_NAME));
+              $targetClassList.remove(DEACTIVE_CLASS_NAME);
+              $targetClassList.add(ACTIVE_CLASS_NAME);
+            }
+          },
+          false
+        );
+      })();
     </script>
+    
   </body>
 </html>
