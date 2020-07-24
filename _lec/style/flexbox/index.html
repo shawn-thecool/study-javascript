@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./index.css" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
   </head>
   <body>
     <div id="root" class="app">
@@ -20,9 +21,7 @@
         </div>
         <div class="wrap_main">
           <div class="box_frame fi3">
-            <div class="box_color">
-              <div class="canvas" width="500" height="200"></div>
-            </div>
+            <div class="box_color" id="test"></div>
           </div>
           <div class="box_frame fi1">
             <div class="box_color"><img src="test2.png" /></div>
@@ -112,8 +111,162 @@
           },
           false
         );
+
+        const data = [
+          { date: new Date(2007, 0, 25), value: 20.24 },
+          { date: new Date(2007, 1, 25), value: 22.35 },
+          { date: new Date(2007, 2, 25), value: 30.84 },
+          { date: new Date(2007, 3, 25), value: 22.92 },
+          { date: new Date(2007, 4, 25), value: 24.81 },
+          { date: new Date(2007, 5, 25), value: 25.47 },
+          { date: new Date(2007, 6, 25), value: 20.47 },
+          { date: new Date(2007, 7, 25), value: 19.47 },
+          { date: new Date(2007, 8, 25), value: 24.47 },
+          { date: new Date(2007, 9, 25), value: 70.47 },
+          { date: new Date(2007, 10, 25), value: 28.47 },
+          { date: new Date(2007, 11, 25), value: 50.47 },
+        ];
+
+        const data2 = [
+          { date: new Date(2008, 0, 25), value: 35.24 },
+          { date: new Date(2008, 1, 25), value: 30.35 },
+          { date: new Date(2008, 2, 25), value: 28.84 },
+          { date: new Date(2008, 3, 25), value: 40.92 },
+          { date: new Date(2008, 4, 25), value: 50.81 },
+          { date: new Date(2008, 5, 25), value: 21.47 },
+          { date: new Date(2008, 6, 25), value: 18.47 },
+          { date: new Date(2008, 7, 25), value: 19.47 },
+          { date: new Date(2008, 8, 25), value: 24.47 },
+          { date: new Date(2008, 9, 25), value: 80.47 },
+          { date: new Date(2008, 10, 25), value: 68.47 },
+          { date: new Date(2008, 11, 25), value: 10.47 },
+        ];
+
+        const data3 = [
+          { date: new Date(2007, 0, 25), value: 80.24 },
+          { date: new Date(2007, 1, 25), value: 75.35 },
+          { date: new Date(2007, 2, 25), value: 70.84 },
+          { date: new Date(2007, 3, 25), value: 77.92 },
+          { date: new Date(2007, 4, 25), value: 90.81 },
+          { date: new Date(2007, 5, 25), value: 88.47 },
+          { date: new Date(2007, 6, 25), value: 85.47 },
+          { date: new Date(2007, 7, 25), value: 99.47 },
+          { date: new Date(2007, 8, 25), value: 74.47 },
+          { date: new Date(2007, 9, 25), value: 79.47 },
+          { date: new Date(2007, 10, 25), value: 81.47 },
+          { date: new Date(2007, 11, 25), value: 82.47 },
+          { date: new Date(2008, 0, 25), value: 78.24 },
+          { date: new Date(2008, 1, 25), value: 75.35 },
+          { date: new Date(2008, 2, 25), value: 70.84 },
+          { date: new Date(2008, 3, 25), value: 77.92 },
+          { date: new Date(2008, 4, 25), value: 78.81 },
+          { date: new Date(2008, 5, 25), value: 81.47 },
+          { date: new Date(2008, 6, 25), value: 77.47 },
+          { date: new Date(2008, 7, 25), value: 88.47 },
+          { date: new Date(2008, 8, 25), value: 90.47 },
+          { date: new Date(2008, 9, 25), value: 91.47 },
+          { date: new Date(2008, 10, 25), value: 82.47 },
+          { date: new Date(2008, 11, 25), value: 87.47 },
+        ];
+
+        const $test = document.querySelector("#test");
+
+        const STYLE = {
+          H: $test.offsetHeight,
+          W: $test.offsetWidth,
+          T: 50,
+          B: 50,
+          R: 50,
+          L: 50,
+        };
+
+        const series = ["2007", "2008"];
+        const datasets = data.concat(data2);
+
+        const x = d3
+          .scaleUtc()
+          .domain(d3.extent(datasets, (d) => d.date))
+          .range([STYLE.L, STYLE.W - STYLE.R]);
+
+        const y = d3
+          .scaleLinear()
+          .domain([0, d3.max(datasets, (d) => d.value)])
+          .range([STYLE.H - STYLE.B, STYLE.T]);
+
+        const line = d3
+          .line()
+          .x((d) => x(d.date))
+          .y((d) => y(d.value));
+
+        // const curve = d3
+        //   .curve(d3.curveBasis)
+        //   .x((d) => x(d.date))
+        //   .y((d) => y(d.value));
+        let cnt = 0;
+        const xAxis = d3
+          .axisBottom(x)
+          .ticks(d3.timeMonth.every(3))
+          .tickFormat((d) => `${d.getFullYear()}-${d.getMonth() + 1}`)
+          .tickSizeOuter(0);
+
+        const yAxis = d3.axisLeft(y).tickSize(STYLE.W - STYLE.L - STYLE.R);
+        // .tickFormat(formatTick);
+
+        //     yAxis = svg => svg
+        // .attr("transform", `translate(${margin.left},0)`)
+        // .call(d3.axisRight(y)
+        //     .tickSize(width - margin.left - margin.right)
+        //     .tickFormat(formatTick))
+        // .call(g => g.select(".domain")
+        //     .remove())
+        // .call(g => g.selectAll(".tick:not(:first-of-type) line")
+        //     .attr("stroke-opacity", 0.5)
+        //     .attr("stroke-dasharray", "2,2"))
+        // .call(g => g.selectAll(".tick text")
+        //     .attr("x", 4)
+        //     .attr("dy", -4))
+
+        const svg = d3
+          .select("#test")
+          .append("svg")
+          .attr("width", STYLE.W)
+          .attr("height", STYLE.H)
+          .attr("viewBox", [0, 0, STYLE.W, STYLE.H])
+          .attr("style", "background:#2b3046");
+        svg
+          .append("path")
+          .datum(datasets)
+          .attr("fill", "transparent")
+          .attr("stroke", (d, i) => "gold")
+          .attr("d", line);
+
+        // svg
+        //   .append("path")
+        //   .datum(data)
+        //   .attr("fill", "transparent")
+        //   .attr("stroke", "blue")
+        //   .attr("d", line);
+        // svg
+        //   .append("path")
+        //   .datum(data2)
+        //   .attr("fill", "transparent")
+        //   .attr("stroke", "red")
+        //   .attr("d", line);
+
+        svg
+          .append("g")
+          .attr("transform", `translate(0, ${STYLE.H - STYLE.B})`)
+          .call(xAxis)
+          .select(".domain")
+          .remove()
+
+        svg
+          .append("g")
+          .attr("transform", `translate(${STYLE.L}, 0)`)
+          .call(yAxis)
+          .select(".domain")
+          .remove();
       })();
     </script>
-    
   </body>
 </html>
