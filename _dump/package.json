@@ -1,0 +1,68 @@
+{
+  "name": "datazoo",
+  "version": "1.0.0",
+  "description": "data-zoo project",
+  "main": "./src/main.js",
+  "scripts": {
+    "dev": "webpack-dev-server --open --mode=development",
+    "build": "webpack --mode=none --progress --profile",
+    "build:prod": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.kakaocorp.com/cooperation/aap-part_datazoo-web"
+  },
+  "author": "dkt",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "url-loader": "^1.0.1",
+    "vue-loader": "^15.2.4",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "ajv": "^6.5.3",
+    "axios": "^0.18.0",
+    "bootstrap-vue": "^2.0.0-rc.11",
+    "clipboard-copy": "^3.1.0",
+    "d3": "^4.13.0",
+    "highcharts": "^6.1.1",
+    "js-cookie": "^2.2.1",
+    "node-sass": "^4.9.3",
+    "venn.js": "^0.2.20",
+    "vue": "^2.6.10",
+    "vue-bootstrap-table": "^0.1.2",
+    "vue-router": "^3.1.2",
+    "vuex": "^3.0.1"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "semi": false,
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "tabs": true,
+    "[javascript]": {
+      "editor.formatOnSave": true
+    }
+  }
+}
